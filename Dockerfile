@@ -21,6 +21,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     cron \
     vim \
+    wget \
     && docker-php-ext-install opcache \
     && docker-php-ext-configure intl \
     && docker-php-ext-install intl \
@@ -56,8 +57,8 @@ ARG GRAV_VERSION=latest
 
 # Install grav
 WORKDIR /var/www
-RUN curl -o grav-admin.zip -SL https://getgrav.org/download/core/grav-admin/${GRAV_VERSION} && \
-    unzip grav-admin.zip && \
+RUN wget -O grav-admin.zip https://github.com/getgrav/grav-skeleton-soraarticle-blog/releases/download/1.1.2/grav-skeleton-soraarticle-blog+admin-1.1.2.zip && \
+    unzip grav-admin.zip -d grav-admin && \
     mv -T /var/www/grav-admin /var/www/html && \
     rm grav-admin.zip
 
