@@ -11,6 +11,7 @@ This currently is pretty minimal and uses:
 * php7.4-yaml
 * cron
 * vim editor
+* wget
 
 ## Persisting data
 
@@ -59,3 +60,6 @@ services:
     volumes:
       - grav-data:/var/www/html
 ```
+## Using different grav skeletons
+
+Modify the Dockerfile to include the .zip link of your favorite skeleton. Assuming there's no file structure weirdness it should work.
